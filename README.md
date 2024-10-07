@@ -30,12 +30,9 @@ Continuity is a web application that helps you discover new movies and track the
  ┃ ┃ ┃ ┗ 📜listsSlice.js    # User movie lists
  ┃ ┃ ┣ 📂movies
  ┃ ┃ ┃ ┗ 📜moviesSlice.js   # Movie data fetching
- ┃ ┃ ┣ 📂user
- ┃ ┃ ┃ ┗ 📜userSlice.js     # User state
  ┃ ┣ 📂pages               # Route components
- ┃ ┃ ┣ 📜FavouritesPage.jsx
+ ┃ ┃ ┣ 📜FavoritesPage.jsx
  ┃ ┃ ┣ 📜HomePage.jsx
- ┃ ┃ ┣ 📜Profile.jsx
  ┃ ┃ ┗ 📜SearchPage.jsx
  ┃ ┣ 📂utils
  ┃ ┃ ┗ 📜localStorage.js    # Utility functions for localStorage interactions
@@ -43,3 +40,12 @@ Continuity is a web application that helps you discover new movies and track the
  ┃ ┣ 📜main.jsx            # Application entry point
  ┃ ┗ 📜index.css           # Global styles
  ┣ 📜.env                    # Environment variables (e.g., API keys)
+```
+
+## Progress
+
+### Day 1 - 7 Oct
+
+```plaintext
+Set up the project and file structure. Realized the scope was too large and adjusted it accordingly. I will now focus on just meeting the requirements. Wrapped the app in Provider and BrowserRouter. Wrote the code for handling loading and saving in utils/localStorage.js and started writing the code for the slices in features. I still need to add better comments to the code.
+```
