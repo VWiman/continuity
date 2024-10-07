@@ -44,4 +44,4 @@ Continuity is a web application that helps you discover new movies and track the
  ┃ ┣ 📜App.jsx             # Main app component with routing
  ┃ ┣ 📜main.jsx            # Application entry point
  ┃ ┗ 📜index.css           # Global styles
-┣ 📜.env                    # Environment variables (e.g., API keys)
+ ┣ 📜.env                    # Environment variables (e.g., API keys)
