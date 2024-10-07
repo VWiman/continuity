@@ -1,4 +1,4 @@
-# Cuntinuity - Find new movies and track what you have seen
+# Continuity - Find new movies and track what you have seen
 
 ### Libraries
 
