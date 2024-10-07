@@ -46,6 +46,4 @@ Continuity is a web application that helps you discover new movies and track the
 
 ### Day 1 - 7 Oct
 
-```plaintext
-Set up the project and file structure. Realized the scope was too large and adjusted it accordingly. I will now focus on just meeting the requirements. Wrapped the app in Provider and BrowserRouter. Wrote the code for handling loading and saving in utils/localStorage.js and started writing the code for the slices in features. I still need to add better comments to the code.
-```
+> Set up the project and file structure. Realized the scope was too large and adjusted it accordingly. I will now focus on just meeting the requirements. Wrapped the app in Provider and BrowserRouter. Wrote the code for handling loading and saving in utils/localStorage.js and started writing the code for the slices in features. I still need to add better comments to the code.
