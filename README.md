@@ -26,18 +26,16 @@ Continuity is a web application that helps you discover new movies and track the
  ┃ ┃ ┣ 📜MovieList.jsx
  ┃ ┃ ┗ 📜SearchBar.jsx
  ┃ ┣ 📂features            # Redux slices and related logic
- ┃ ┃ ┣ 📂auth
- ┃ ┃ ┃ ┗ 📜authSlice.js     # Authentication state
  ┃ ┃ ┣ 📂lists
  ┃ ┃ ┃ ┗ 📜listsSlice.js    # User movie lists
  ┃ ┃ ┣ 📂movies
  ┃ ┃ ┃ ┗ 📜moviesSlice.js   # Movie data fetching
+ ┃ ┃ ┣ 📂user
+ ┃ ┃ ┃ ┗ 📜userSlice.js     # User state
  ┃ ┣ 📂pages               # Route components
+ ┃ ┃ ┣ 📜FavouritesPage.jsx
  ┃ ┃ ┣ 📜HomePage.jsx
- ┃ ┃ ┣ 📜LoginPage.jsx
- ┃ ┃ ┣ 📜MovieListsPage.jsx
  ┃ ┃ ┣ 📜Profile.jsx
- ┃ ┃ ┣ 📜RegisterPage.jsx
  ┃ ┃ ┗ 📜SearchPage.jsx
  ┃ ┣ 📂utils
  ┃ ┃ ┗ 📜localStorage.js    # Utility functions for localStorage interactions
