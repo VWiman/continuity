@@ -1,5 +1,6 @@
 const MovieCard = ({ movie, id }) => {
-	return (
+	
+    return (
 		<li key={id}>
 			<h3>
 				{movie.Title}

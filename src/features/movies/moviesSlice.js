@@ -20,9 +20,9 @@ export const fetchMovies = createAsyncThunk("movies/fetchMovies", async (searchV
 		}
 
 		// Return the result if there are no errors
-		console.log(result.Search)
+		console.log(result.Search);
 		return result.Search;
-	// Throw error if there is no response
+		// Throw error if there is no response
 	} catch (error) {
 		return thunkAPI.rejectWithValue(`Failed to get response: ${error.message}`);
 	}
@@ -58,9 +58,9 @@ const moviesSlice = createSlice({
 				state.movies = action.payload;
 				state.error = null;
 			})
-			.addCase(fetchMovies.rejected, (state, action) => {
+			.addCase(fetchMovies.rejected, (state) => {
 				state.status = "failed";
-				state.error = action.payload || "Failed to fetch movies";
+				state.error = "Failed to fetch movies";
 			});
 	},
 });

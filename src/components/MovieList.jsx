@@ -1,19 +1,21 @@
-import { useSelector } from "react-redux";
+import { useLocation } from "react-router-dom";
 import MovieCard from "./MovieCard";
 
-const MovieList = (movies) => {
-	if (!movies || movies.length === 0) {
-		return <p>No movies found.</p>;
+const MovieList = ({ movies, error }) => {
+	const location = useLocation();
+
+	if (error && movies.length === 0) {
+		return <p>{error}</p>;
 	}
 
-	console.log(movies.movies);
-
-	return (
+	return location.pathname == "/search" ? (
 		<ul className="movie-list">
-			{movies.movies.map((movie) => (
+			{movies.map((movie) => (
 				<MovieCard key={movie.imdbID} id={movie.imdbID} movie={movie} />
 			))}
 		</ul>
+	) : (
+		<></>
 	);
 };
 

@@ -37,7 +37,8 @@ Continuity is a web application that helps you discover new movies and track the
  ┃ ┣ 📂utils
  ┃ ┃ ┗ 📜localStorage.js    # Utility functions for localStorage interactions
  ┃ ┣ 📜App.jsx             # Main app component with routing
- ┃ ┣ 📜main.jsx            # Application entry point
+ ┃ ┣ 📜Main.jsx            # Application entry point
+ ┃ ┣ 📜routes.js
  ┃ ┗ 📜index.css           # Global styles
  ┣ 📜.env                    # Environment variables (e.g., API keys)
 ```
