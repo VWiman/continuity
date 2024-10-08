@@ -3,7 +3,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 const API_KEY = import.meta.env.VITE_OMDB_API_KEY;
 
 // Search for movie by title, use thunkAPI to reject with value
-const fetchMovies = createAsyncThunk("movies/fetchMovies", async (searchValue, thunkAPI) => {
+export const fetchMovies = createAsyncThunk("movies/fetchMovies", async (searchValue, thunkAPI) => {
 	try {
 		const response = await fetch(`https://www.omdbapi.com/?apikey=${API_KEY}&s=${searchValue}`);
 
@@ -20,7 +20,8 @@ const fetchMovies = createAsyncThunk("movies/fetchMovies", async (searchValue, t
 		}
 
 		// Return the result if there are no errors
-		return result;
+		console.log(result.Search)
+		return result.Search;
 	// Throw error if there is no response
 	} catch (error) {
 		return thunkAPI.rejectWithValue(`Failed to get response: ${error.message}`);
