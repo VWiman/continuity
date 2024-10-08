@@ -9,7 +9,7 @@ const initialState = savedListsState || {
 	favorites: [],
 };
 
-// Create a slice with function to add and remove movies from favorites
+// Create a slice with functions to add and remove movies from favorites
 const listsSlice = createSlice({
 	name: "lists",
 	initialState,
