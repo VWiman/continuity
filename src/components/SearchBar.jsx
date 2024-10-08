@@ -21,7 +21,7 @@ const SearchBar = () => {
 				value={searchText}
 				onChange={(e) => setSearchText(e.target.value)}
 				placeholder="Search for a movie..."></input>
-			<button type="submit">Search</button>
+			<button type="submit">search</button>
 		</form>
 	);
 };
