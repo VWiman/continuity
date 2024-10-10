@@ -6,7 +6,7 @@ const MovieList = ({ movies, error }) => {
 	}
 
 	return (
-		<ul className="movie-list">
+		<ul className="w-full h-fit">
 			{movies.map((movie) => (
 				<MovieCard key={movie.imdbID} movie={movie} />
 			))}
