@@ -19,6 +19,9 @@ Continuity is a web application that helps you discover new movies and track the
  ┃ ┣ 📂app
  ┃ ┃ ┗ 📜store.js          # Redux store configuration
  ┃ ┣ 📂components          # Reusable UI components
+ ┃ ┃ ┣ 📂icons
+ ┃ ┃ ┃ ┣ 📜Star.jsx
+ ┃ ┃ ┃ ┗ 📜StarOutline.jsx 
  ┃ ┃ ┣ 📜Footer.jsx
  ┃ ┃ ┣ 📜Header.jsx
  ┃ ┃ ┣ 📜Layout.jsx
@@ -52,3 +55,7 @@ Continuity is a web application that helps you discover new movies and track the
 ### Day 2 - 8 Oct
 
 > Completed adding comments for Redux-related code. Implemented search functionality and basic navigation.
+
+### Day 3 - 10 Oct
+
+> Implemented favorites functions and display. Added buttons to add and remove from favorites. Added icons for the buttons. Implemented saving to localHost from store.
