@@ -14,16 +14,19 @@ const listsSlice = createSlice({
 	name: "lists",
 	initialState,
 	reducers: {
+
 		addToList: (state, action) => {
 			const { listName, movie } = action.payload;
 			if (!state[listName].find((item) => item.imdbID === movie.imdbID)) {
 				state[listName].push(movie);
+				console.log(movie.Title, " added to ", listName);
 			}
 		},
 
 		removeFromList: (state, action) => {
 			const { listName, movie } = action.payload;
 			state[listName] = state[listName].filter((item) => item.imdbID !== movie.imdbID);
+			console.log(movie.Title, " removed from ", listName);
 		},
 	},
 });
