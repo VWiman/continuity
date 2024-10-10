@@ -58,4 +58,4 @@ Continuity is a web application that helps you discover new movies and track the
 
 ### Day 3 - 10 Oct
 
-> Implemented favorites functions and display. Added buttons to add and remove from favorites. Added icons for the buttons. Implemented saving to localHost from store.
+> Implemented favorites functions and display. Added buttons to add and remove from favorites. Added icons for the buttons. Implemented saving to localHost from store. Created a new styling branch and implemented the first pass of styling.
