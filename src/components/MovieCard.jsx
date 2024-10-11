@@ -57,12 +57,13 @@ const MovieCard = ({ movie }) => {
 					<span className="text-sm md:text-xl font-semibold mt-2">{movie.Title}</span>
 					<span className="text-xs md:text-md font-medium text-gray-400">{movie.Year}</span>
 				</h3>
-				
+
 				{isFavorite ? (
 					<Button type="icon" icon={Star} text={null} action={handleDeleteFromFavorites} />
 				) : (
 					<Button type="icon" icon={StarOutline} text={null} action={handleAddToFavorites} />
-				)}<Button type="button" icon={null} text="Details" action={handleOpenModal} />
+				)}
+				<Button type={null} icon={null} text="Details" action={handleOpenModal} />
 			</div>
 			<Modal isOpen={isModalOpen} onClose={handleCloseModal}>
 				{movieDetails.Actors ? (

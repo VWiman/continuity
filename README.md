@@ -20,11 +20,16 @@ Continuity is a web application that helps you discover new movies and track the
  ┃ ┃ ┗ 📜store.js          # Redux store configuration
  ┃ ┣ 📂components          # Reusable UI components
  ┃ ┃ ┣ 📂icons
+ ┃ ┃ ┃ ┣ 📜Bars.jsx
+ ┃ ┃ ┃ ┣ 📜Close.jsx
  ┃ ┃ ┃ ┣ 📜Star.jsx
- ┃ ┃ ┃ ┗ 📜StarOutline.jsx 
+ ┃ ┃ ┃ ┗ 📜StarOutline.jsx
+ ┃ ┃ ┣ 📜Buttons.jsx
  ┃ ┃ ┣ 📜Footer.jsx
  ┃ ┃ ┣ 📜Header.jsx
  ┃ ┃ ┣ 📜Layout.jsx
+ ┃ ┃ ┣ 📜Main.jsx
+ ┃ ┃ ┣ 📜Modal.jsx
  ┃ ┃ ┣ 📜MovieCard.jsx
  ┃ ┃ ┣ 📜MovieList.jsx
  ┃ ┃ ┗ 📜SearchBar.jsx
@@ -32,6 +37,7 @@ Continuity is a web application that helps you discover new movies and track the
  ┃ ┃ ┣ 📂lists
  ┃ ┃ ┃ ┗ 📜listsSlice.js    # User movie lists
  ┃ ┃ ┣ 📂movies
+ ┃ ┃ ┃ ┣ 📜movieDetails.jsx # Movie details data fetching
  ┃ ┃ ┃ ┗ 📜moviesSlice.js   # Movie data fetching
  ┃ ┣ 📂pages               # Route components
  ┃ ┃ ┣ 📜FavoritesPage.jsx
@@ -59,3 +65,7 @@ Continuity is a web application that helps you discover new movies and track the
 ### Day 3 - 10 Oct
 
 > Implemented favorites functions and display. Added buttons to add and remove from favorites. Added icons for the buttons. Implemented saving to localHost from store. Created a new styling branch and implemented the first pass of styling.
+
+### Day 4 - 11 Oct
+
+> Finished styling. Added a slice to fetch movie details. Added and implemented a modal to view movie details.
