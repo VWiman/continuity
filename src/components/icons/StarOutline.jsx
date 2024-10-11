@@ -5,7 +5,7 @@ const StarOutline = (
 		viewBox="0 0 24 24"
 		strokeWidth={1.5}
 		stroke="currentColor"
-		className="size-5 -mt-1.5 md:mt-0 mr-auto md:size-12 md:hover:animate-pulse-slow drop-shadow-md">
+		className="size-5 mt-[-30px] md:mt-0 -ml-5 md:size-12 md:hover:animate-pulse-slow drop-shadow-md">
 		<path
 			strokeLinecap="round"
 			strokeLinejoin="round"
