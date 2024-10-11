@@ -70,36 +70,33 @@ const MovieCard = ({ movie }) => {
 			<Modal isOpen={isModalOpen} onClose={handleCloseModal}>
 				{movieDetails.Actors ? (
 					<div className="flex flex-col item-center my-3 w-full">
-						{/* Container with Flex for Image and Movie Details */}
 						<div className="w-full flex flex-col justify-center items-center sm:flex-row">
-							{/* Image Container */}
 							<div className="w-auto sm:mr-4 mb-4 sm:mb-0 rounded-2xl shadow-sm shadow-black/80 border-4">
 								<div className="w-48 sm:w-56 rounded-2xl overflow-hidden">
 									<img src={movie.Poster} alt={movie.Title} className="w-full" />
 								</div>
 							</div>
 
-							{/* Movie Details to the Right of the Image */}
-							<ul className="flex flex-col h-full justify-center gap-2 text-xs sm:text-sm bg-stone-300 p-4 sm:py-6 sm:px-8 rounded-2xl shadow-sm shadow-black/80 text-center sm:text-left w-48 sm:w-auto mx-h-[320px]">
-								<li className="flex flex-col sm:gap-2">
-									<span className="font-semibold uppercase tracking-wide leading-none">Director</span>
-									{movieDetails.Director}
+							<ul className="flex flex-col h-full justify-center gap-2 sm:gap-3 text-[10px] sm:text-xs md:text-sm bg-black text-white p-4 sm:py-6 sm:px-8 rounded-2xl shadow-sm shadow-black/80 text-center sm:text-left w-48 sm:w-auto mx-h-[320px] tracking-wide">
+								<li className="flex flex-col sm:gap-1">
+									<span className="font-semibold uppercase tracking-wider leading-none">Director</span>
+									<span className="text-[8px] sm:text-xs">{movieDetails.Director}</span>
 								</li>
-								<li className="flex flex-col sm:gap-2">
-									<span className="font-semibold uppercase tracking-wide leading-none">Actors</span>
-									{movieDetails.Actors}
+								<li className="flex flex-col sm:gap-1">
+									<span className="font-semibold uppercase tracking-wider leading-none">Actors</span>
+									<span className="text-[8px] sm:text-xs">{movieDetails.Actors}</span>
 								</li>
-								<li className="flex flex-col sm:gap-2">
-									<span className="font-semibold uppercase tracking-wide leading-none">Genre</span>
-									{movieDetails.Genre}
+								<li className="flex flex-col sm:gap-1">
+									<span className="font-semibold uppercase tracking-wider leading-none">Genre</span>
+									<span className="text-[8px] sm:text-xs">{movieDetails.Genre}</span>
 								</li>
-								<li className="flex flex-col sm:gap-2">
-									<span className="font-semibold uppercase tracking-wide leading-none">Released</span>
-									{movieDetails.Released}
+								<li className="flex flex-col sm:gap-1">
+									<span className="font-semibold uppercase tracking-wider leading-none">Released</span>
+									<span className="text-[8px] sm:text-xs">{movieDetails.Released}</span>
 								</li>
-								<li className="flex flex-col sm:gap-2">
+								<li className="flex flex-col sm:gap-1">
 									<span className="font-semibold uppercase tracking-wide leading-none">IMDB Rating</span>
-									{movieDetails.imdbRating}
+									<span className="text-[8px] sm:text-xs">{movieDetails.imdbRating}</span>
 								</li>
 							</ul>
 						</div>
@@ -107,7 +104,7 @@ const MovieCard = ({ movie }) => {
 						{/* Title and Description Below Image and Details */}
 						<div className="w-full mt-4">
 							<h4 className="text-2xl md:text-4xl font-bold text-center">{movieDetails.Title}</h4>
-							<p className="text-xs sm:text-base text-center mx-auto max-w-2xl mt-2">{movieDetails.Plot}</p>
+							<p className="text-sm sm:text-lg text-center mx-auto max-w-2xl mt-2">{movieDetails.Plot}</p>
 						</div>
 					</div>
 				) : (

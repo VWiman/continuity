@@ -22,7 +22,7 @@ const SearchBar = () => {
 				value={searchText}
 				onChange={(e) => setSearchText(e.target.value)}
 				placeholder="Search for a movie..."
-				className="p-1.5 rounded-xl shadow-black/15 shadow-inner outline-none"></input>
+				className="p-1.5 text-md m-0 rounded-lg shadow-black/30 shadow-inner outline-none"></input>
 			<SubmitButton text="search" action={null} />
 		</form>
 	);

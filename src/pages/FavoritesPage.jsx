@@ -8,9 +8,7 @@ export default function FavoritesPage() {
 	return (
 		<>
 			<div className="w-fit mx-auto text-center">
-				<h2 className="text-2xl md:text-4xl font-semibold uppercase">
-					favorites
-				</h2>
+				<h2 className="text-2xl md:text-5xl font-semibold uppercase font-serif px-2">favorites</h2>
 			</div>
 			<MovieList movies={movies} error={error} />
 		</>
