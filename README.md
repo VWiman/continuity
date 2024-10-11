@@ -68,4 +68,4 @@ Continuity is a web application that helps you discover new movies and track the
 
 ### Day 4 - 11 Oct
 
-> Finished styling. Added a slice to fetch movie details. Added and implemented a modal to view movie details.
+> Finished styling. Added a slice to fetch movie details. Added and implemented a modal to view movie details. Reworked buttons into seperate components, need to document this.
