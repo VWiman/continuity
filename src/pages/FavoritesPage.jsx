@@ -7,6 +7,11 @@ export default function FavoritesPage() {
 
 	return (
 		<>
+			<div className="w-fit mx-auto text-center">
+				<h2 className="text-2xl md:text-4xl font-semibold uppercase">
+					favorites
+				</h2>
+			</div>
 			<MovieList movies={movies} error={error} />
 		</>
 	);

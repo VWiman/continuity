@@ -11,7 +11,7 @@ export default function HomePage() {
 	return (
 		<>
 			<div className="w-fit mx-auto text-center">
-				<h2 className="text-2xl md:text-4xl font-semibold uppercase">maintain movie continuity and track your favorites</h2>
+				<h2 className="text-xl sm:text-2xl md:text-4xl font-semibold uppercase">maintain movie continuity and track your favorites</h2>
 			</div>
 			<div className="flex flex-col w-fit gap-4 md:mx-auto py-4 items-center">
 				<p className="flex flex-col gap-2 md:text-xl px-4 md:px-0 text-center">

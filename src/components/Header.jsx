@@ -24,7 +24,7 @@ const Header = () => {
 			</div>
 
 			<nav className={`md:block ${isOpen ? "block" : "hidden"}`}>
-				<ul className="flex flex-col w-full pl-2 md:pl-0 md:flex-row md:gap-2 bg-gradient-to-b md:bg-gradient-to-l from-white to-stone-200 pr-1.5">
+				<ul className="flex flex-col w-full pl-2 md:pl-0 md:flex-row md:gap-4 bg-gradient-to-b md:bg-none from-white to-stone-200 pr-1.5">
 					{routes.map((route) => {
 						return (
 							<li className="hover:text-red-600 tracking-wide" key={route.name}>
