@@ -13,7 +13,7 @@ const Modal = ({ isOpen, onClose, children }) => {
 				<button className="absolute top-3 right-3 text-black text-2xl" onClick={onClose}>
 					{Close}
 				</button>
-				<div className="px-6">{children}</div>
+				<div className="flex flex-col items-center justify-center w-full p-8">{children}</div>
 			</div>
 		</div>
 	);

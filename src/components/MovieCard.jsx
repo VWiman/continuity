@@ -1,12 +1,13 @@
 // MovieCard.js
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import Button from "./Button";
+import Button from "./buttons/Button";
 import Star from "./icons/Star";
 import StarOutline from "./icons/StarOutline";
 import Modal from "./Modal";
 import { addToList, removeFromList } from "../features/lists/listsSlice";
 import { fetchMovieDetails } from "../features/movies/movieDetails";
+import IconButton from "./buttons/IconButton";
 
 const MovieCard = ({ movie }) => {
 	const dispatch = useDispatch();
@@ -57,41 +58,56 @@ const MovieCard = ({ movie }) => {
 					<span className="text-sm md:text-xl font-semibold mt-2">{movie.Title}</span>
 					<span className="text-xs md:text-md font-medium text-gray-400">{movie.Year}</span>
 				</h3>
-
-				{isFavorite ? (
-					<Button type="icon" icon={Star} text={null} action={handleDeleteFromFavorites} />
-				) : (
-					<Button type="icon" icon={StarOutline} text={null} action={handleAddToFavorites} />
-				)}
+				<i className="self-start md:self-center mr-4 -mb-1">
+					{isFavorite ? (
+						<IconButton text={Star} action={handleDeleteFromFavorites} />
+					) : (
+						<IconButton text={StarOutline} action={handleAddToFavorites} />
+					)}
+				</i>
 				<Button type={null} icon={null} text="Details" action={handleOpenModal} />
 			</div>
 			<Modal isOpen={isModalOpen} onClose={handleCloseModal}>
 				{movieDetails.Actors ? (
-					<div className="my-3">
-						<h4 className="text-2xl font-bold">{movieDetails.Title}</h4>
-						<p className=" text-base pb-2">{movieDetails.Plot}</p>
-						<ul className="flex flex-col gap-2 text-sm pt-2">
-							<li className="flex flex-col">
-								<span className="font-semibold uppercase tracking-wide leading-none">director</span>{" "}
-								{movieDetails.Director}
-							</li>
-							<li className="flex flex-col">
-								<span className="font-semibold uppercase tracking-wide leading-none">actors</span> {movieDetails.Actors}
-							</li>
-							<li className="flex flex-col">
-								<span className="font-semibold uppercase tracking-wide leading-none">genre</span> {movieDetails.Genre}
-							</li>
-							<li className="flex flex-col">
-								<span className="font-semibold uppercase tracking-wide leading-none">released</span>{" "}
-								{movieDetails.Released}
-							</li>
-							<li className="flex flex-col">
-								<span className="font-semibold uppercase tracking-wide leading-none">IMDB Rating</span>{" "}
-								{movieDetails.imdbRating}
-							</li>
-						</ul>
-						<div className="absolute bottom-4 right-4 w-20 sm:w-32 md:w-36 rounded-2xl overflow-hidden cursor-pointer shadow-sm shadow-black/80">
-							<img src={movie.Poster} alt={movie.Title} />
+					<div className="flex flex-col item-center my-3 w-full">
+						{/* Container with Flex for Image and Movie Details */}
+						<div className="w-full flex flex-col justify-center items-center sm:flex-row">
+							{/* Image Container */}
+							<div className="w-auto sm:mr-4 mb-4 sm:mb-0 rounded-2xl shadow-sm shadow-black/80 border-4">
+								<div className="w-48 sm:w-56 rounded-2xl overflow-hidden">
+									<img src={movie.Poster} alt={movie.Title} className="w-full" />
+								</div>
+							</div>
+
+							{/* Movie Details to the Right of the Image */}
+							<ul className="flex flex-col h-full justify-center gap-2 text-xs sm:text-sm bg-stone-300 p-4 sm:py-6 sm:px-8 rounded-2xl shadow-sm shadow-black/80 text-center sm:text-left w-48 sm:w-auto mx-h-[320px]">
+								<li className="flex flex-col sm:gap-2">
+									<span className="font-semibold uppercase tracking-wide leading-none">Director</span>
+									{movieDetails.Director}
+								</li>
+								<li className="flex flex-col sm:gap-2">
+									<span className="font-semibold uppercase tracking-wide leading-none">Actors</span>
+									{movieDetails.Actors}
+								</li>
+								<li className="flex flex-col sm:gap-2">
+									<span className="font-semibold uppercase tracking-wide leading-none">Genre</span>
+									{movieDetails.Genre}
+								</li>
+								<li className="flex flex-col sm:gap-2">
+									<span className="font-semibold uppercase tracking-wide leading-none">Released</span>
+									{movieDetails.Released}
+								</li>
+								<li className="flex flex-col sm:gap-2">
+									<span className="font-semibold uppercase tracking-wide leading-none">IMDB Rating</span>
+									{movieDetails.imdbRating}
+								</li>
+							</ul>
+						</div>
+
+						{/* Title and Description Below Image and Details */}
+						<div className="w-full mt-4">
+							<h4 className="text-2xl md:text-4xl font-bold text-center">{movieDetails.Title}</h4>
+							<p className="text-xs sm:text-base text-center mx-auto max-w-2xl mt-2">{movieDetails.Plot}</p>
 						</div>
 					</div>
 				) : (
