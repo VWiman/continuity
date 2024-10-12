@@ -17,7 +17,7 @@ export default function HomePage() {
 				<title>Movie Continuity - Track Your Favorites</title>
 				<meta
 					name="description"
-					content="Maintain movie continuity and track your favorite movies with Continuity. Search for any movie and retrieve detailed information."
+					content="Maintain movie watching continuity and track your favorite movies with Continuity. Search for any movie and retrieve detailed information."
 				/>
 				{/* Open Graph / Facebook */}
 				<meta property="og:title" content="Movie Continuity - Track Your Favorites" />
