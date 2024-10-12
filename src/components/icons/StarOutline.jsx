@@ -1,11 +1,11 @@
 const StarOutline = (
 	<svg
 		xmlns="http://www.w3.org/2000/svg"
-		fill="none"
+		fill="#fefbe8"
 		viewBox="0 0 24 24"
 		strokeWidth={1.5}
 		stroke="currentColor"
-		className="size-6">
+		className="size-5 md:size-12 md:hover:animate-pulse-slow drop-shadow-md">
 		<path
 			strokeLinecap="round"
 			strokeLinejoin="round"

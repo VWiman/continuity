@@ -4,12 +4,15 @@ Continuity is a web application that helps you discover new movies and track the
 
 ## Libraries Used
 
-- **@reduxjs/toolkit**
-- **react-redux**
-- **react-router-dom**
-- **tailwindcss**
-- **postcss**
-- **autoprefixer**
+- **[@reduxjs/toolkit](https://www.npmjs.com/package/@reduxjs/toolkit)**: A set of tools to simplify Redux development.
+- **[react-redux](https://www.npmjs.com/package/react-redux)**: Official React bindings for Redux.
+- **[react-router-dom](https://www.npmjs.com/package/react-router-dom)**: Declarative routing for React applications.
+- **[react-helmet-async](https://www.npmjs.com/package/react-helmet-async)**: A reusable React component for managing `<head>` elements with support for async server rendering.
+- **[tailwindcss](https://www.npmjs.com/package/tailwindcss)**: A utility-first CSS framework for rapid UI development.
+- **[postcss](https://www.npmjs.com/package/postcss)**: A tool for transforming CSS with JavaScript plugins.
+- **[autoprefixer](https://www.npmjs.com/package/autoprefixer)**: A PostCSS plugin to parse CSS and add vendor prefixes.
+- **[sitemap](https://www.npmjs.com/package/sitemap)**: A Node.js module for creating XML sitemaps for SEO.
+
 
 ## File Structure
 
@@ -19,12 +22,22 @@ Continuity is a web application that helps you discover new movies and track the
  ┃ ┣ 📂app
  ┃ ┃ ┗ 📜store.js          # Redux store configuration
  ┃ ┣ 📂components          # Reusable UI components
+ ┃ ┃ ┣ 📂buttons
+ ┃ ┃ ┃ ┣ 📜Button.jsx
+ ┃ ┃ ┃ ┣ 📜CtaButton.jsx
+ ┃ ┃ ┃ ┣ 📜IconButton.jsx
+ ┃ ┃ ┃ ┗ 📜SubmitButton.jsx
  ┃ ┃ ┣ 📂icons
+ ┃ ┃ ┃ ┣ 📜Bars.jsx
+ ┃ ┃ ┃ ┣ 📜Close.jsx
  ┃ ┃ ┃ ┣ 📜Star.jsx
- ┃ ┃ ┃ ┗ 📜StarOutline.jsx 
+ ┃ ┃ ┃ ┗ 📜StarOutline.jsx
+ ┃ ┃ ┣ 📜Buttons.jsx
  ┃ ┃ ┣ 📜Footer.jsx
  ┃ ┃ ┣ 📜Header.jsx
  ┃ ┃ ┣ 📜Layout.jsx
+ ┃ ┃ ┣ 📜Main.jsx
+ ┃ ┃ ┣ 📜Modal.jsx
  ┃ ┃ ┣ 📜MovieCard.jsx
  ┃ ┃ ┣ 📜MovieList.jsx
  ┃ ┃ ┗ 📜SearchBar.jsx
@@ -32,6 +45,7 @@ Continuity is a web application that helps you discover new movies and track the
  ┃ ┃ ┣ 📂lists
  ┃ ┃ ┃ ┗ 📜listsSlice.js    # User movie lists
  ┃ ┃ ┣ 📂movies
+ ┃ ┃ ┃ ┣ 📜movieDetails.jsx # Movie details data fetching
  ┃ ┃ ┃ ┗ 📜moviesSlice.js   # Movie data fetching
  ┃ ┣ 📂pages               # Route components
  ┃ ┃ ┣ 📜FavoritesPage.jsx
@@ -44,6 +58,8 @@ Continuity is a web application that helps you discover new movies and track the
  ┃ ┣ 📜routes.js
  ┃ ┗ 📜index.css           # Global styles
  ┣ 📜.env                    # Environment variables (e.g., API keys)
+ ┣ 📜.generate-sitemap.js
+ ┣ 📜.generateRobotsTxt.js
 ```
 
 ## Progress
@@ -58,4 +74,12 @@ Continuity is a web application that helps you discover new movies and track the
 
 ### Day 3 - 10 Oct
 
-> Implemented favorites functions and display. Added buttons to add and remove from favorites. Added icons for the buttons. Implemented saving to localHost from store.
+> Implemented favorites functions and display. Added buttons to add and remove from favorites. Added icons for the buttons. Implemented saving to localHost from store. Created a new styling branch and implemented the first pass of styling.
+
+### Day 4 - 11 Oct
+
+> Finished styling. Added a slice to fetch movie details. Added and implemented a modal to view movie details. Reworked buttons into seperate components, need to document this.
+
+### Day 5 - 12 Oct
+
+> Added meta tags and scripts to generate sitemap and robots.txt. Added dynamic meta for when the user views a movies details.
