@@ -1,8 +1,10 @@
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import CtaButton from "../components/buttons/CtaButton";
+import { Helmet } from "react-helmet-async";
 
 export default function HomePage() {
 	const navigate = useNavigate();
+	const location = useLocation()
 
 	const handleButtonClick = () => {
 		navigate("/search");
@@ -10,6 +12,32 @@ export default function HomePage() {
 
 	return (
 		<>
+			<Helmet>
+				{/* Basic meta */}
+				<title>Movie Continuity - Track Your Favorites</title>
+				<meta
+					name="description"
+					content="Maintain movie continuity and track your favorite movies with Continuity. Search for any movie and retrieve detailed information."
+				/>
+				{/* Open Graph / Facebook */}
+				<meta property="og:title" content="Movie Continuity - Track Your Favorites" />
+				<meta
+					property="og:description"
+					content="Search and track your favorite movies with Continuity. Easily maintain movie continuity and discover more."
+				/>
+				<meta property="og:url" content={location.pathname} />
+				<meta property="og:type" content="website" />
+
+				{/* Twitter */}
+				<meta name="twitter:card" content="summary" />
+				<meta name="twitter:title" content="Movie Continuity - Track Your Favorites" />
+				<meta
+					name="twitter:description"
+					content="Search and track your favorite movies with Continuity. Easily maintain movie continuity and discover more."
+				/>
+				<meta name="twitter:url" content={location.pathname} />
+			</Helmet>
+
 			<div className="w-fit mx-auto text-center">
 				<h2 className="text-xl leading-none sm:text-2xl md:text-5xl font-semibold uppercase font-serif px-2">
 					maintain <span className="text-white bg-movie-red-600 px-2 rounded-xl">movie</span> continuity and track your{" "}

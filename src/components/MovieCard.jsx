@@ -1,4 +1,3 @@
-// MovieCard.js
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import Button from "./buttons/Button";
@@ -8,12 +7,15 @@ import Modal from "./Modal";
 import { addToList, removeFromList } from "../features/lists/listsSlice";
 import { fetchMovieDetails } from "../features/movies/movieDetails";
 import IconButton from "./buttons/IconButton";
+import { useLocation } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 const MovieCard = ({ movie }) => {
 	const dispatch = useDispatch();
 	const favorites = useSelector((state) => state.lists.favorites);
 	const movieDetails = useSelector((state) => state.movieDetails.movie);
 	const [isModalOpen, setIsModalOpen] = useState(false);
+	const location = useLocation()
 
 	const isFavorite = favorites.some((item) => item.imdbID === movie.imdbID);
 
@@ -70,6 +72,23 @@ const MovieCard = ({ movie }) => {
 			<Modal isOpen={isModalOpen} onClose={handleCloseModal}>
 				{movieDetails.Actors ? (
 					<div className="flex flex-col item-center my-3 w-full">
+						{isModalOpen && (
+							<Helmet>
+								<title>{`${movieDetails.Title} - Movie Details`}</title>
+								<meta name="description" content={`${movieDetails.Plot}`} />
+								<meta property="og:title" content={`${movieDetails.Title} - Movie Details`} />
+								<meta property="og:description" content={`${movieDetails.Plot}`} />
+								<meta property="og:image" content={movie.Poster} />
+								<meta property="og:type" content="movie" />
+								<meta property="og:url" content={location.pathname} />
+								<meta name="twitter:card" content="summary_large_image" />
+								<meta name="twitter:title" content={`${movieDetails.Title} - Movie Details`} />
+								<meta name="twitter:description" content={`${movieDetails.Plot}`} />
+								<meta name="twitter:image" content={movie.Poster} />
+								<meta name="twitter:url" content={location.pathname} />
+							</Helmet>
+						)}
+
 						<div className="w-full flex flex-col justify-center items-center sm:flex-row">
 							<div className="w-auto sm:mr-4 mb-4 sm:mb-0 rounded-2xl shadow-sm shadow-black/80 border-4">
 								<div className="w-48 sm:w-56 rounded-2xl overflow-hidden">
