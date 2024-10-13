@@ -19,6 +19,7 @@ Continuity is a web application that helps you discover new movies and track the
 ```plaintext
 📦continuity
  ┣ 📂public
+ ┃ ┣ 📜favicon.svg
  ┃ ┣ 📜sitemap.xml
  ┃ ┗ 📜robots.txt      
  ┣ 📂src
@@ -50,7 +51,7 @@ Continuity is a web application that helps you discover new movies and track the
  ┃ ┃ ┣ 📂movies
  ┃ ┃ ┃ ┣ 📜movieDetails.jsx # Movie details data fetching
  ┃ ┃ ┃ ┗ 📜moviesSlice.js   # Movie data fetching
- ┃ ┣ 📂pages               # Route components
+ ┃ ┣ 📂pages               # Pages components
  ┃ ┃ ┣ 📜FavoritesPage.jsx
  ┃ ┃ ┣ 📜HomePage.jsx
  ┃ ┃ ┗ 📜SearchPage.jsx
@@ -59,7 +60,7 @@ Continuity is a web application that helps you discover new movies and track the
  ┃ ┣ 📜App.jsx             # Main app component with routing
  ┃ ┣ 📜Main.jsx            # Application entry point
  ┃ ┣ 📜routes.js
- ┃ ┗ 📜index.css           # Global styles
+ ┃ ┗ 📜index.css           # Global styles / Tailwind
  ┣ 📜.env                    # Environment variables (e.g., API keys)
  ┣ 📜.generate-sitemap.js
  ┣ 📜.generateRobotsTxt.js
@@ -86,3 +87,7 @@ Continuity is a web application that helps you discover new movies and track the
 ### Day 5 - 12 Oct
 
 > Added meta tags and scripts to generate sitemap and robots.txt. Added dynamic meta for when the user views a movies details.
+
+### Day 6 - 13 Oct
+
+> Implemented GA4, GTM and Cypress. Left to do is additonal test, WCAG and commenting.
