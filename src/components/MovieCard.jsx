@@ -46,7 +46,7 @@ const MovieCard = ({ movie }) => {
 	}
 
 	return (
-		<li className="flex w-full justify-between p-4 my-8" key={movie.imdbID}>
+		<li className="flex w-full justify-between p-4 my-8 movieItem" key={movie.imdbID}>
 			{movie.Poster && (
 				<div className="min-w-16 max-w-16 max-h-[100px] sm:max-h-full md:max-w-28 -mr-24 md:-mr-32 -mt-4 mb-3 ml-2 md:ml-14 z-50 rounded-2xl overflow-hidden cursor-pointer shadow-sm shadow-black/80">
 					<img className="h-full aspect-auto" src={movie.Poster} alt={movie.Title} />

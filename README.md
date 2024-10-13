@@ -18,6 +18,9 @@ Continuity is a web application that helps you discover new movies and track the
 
 ```plaintext
 📦continuity
+ ┣ 📂public
+ ┃ ┣ 📜sitemap.xml
+ ┃ ┗ 📜robots.txt      
  ┣ 📂src
  ┃ ┣ 📂app
  ┃ ┃ ┗ 📜store.js          # Redux store configuration
