@@ -1,5 +1,4 @@
 // Load and save state from and to localstorage
-
 export const loadState = (key) => {
 	try {
 		const stateLoaded = localStorage.getItem(key);

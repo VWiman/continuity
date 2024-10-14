@@ -40,7 +40,7 @@ Continuity is a web application that helps you discover new movies and track the
  ┃ ┃ ┣ 📜Footer.jsx
  ┃ ┃ ┣ 📜Header.jsx
  ┃ ┃ ┣ 📜Layout.jsx
- ┃ ┃ ┣ 📜Main.jsx
+ ┃ ┃ ┣ 📜MainContainer.jsx
  ┃ ┃ ┣ 📜Modal.jsx
  ┃ ┃ ┣ 📜MovieCard.jsx
  ┃ ┃ ┣ 📜MovieList.jsx
@@ -91,3 +91,7 @@ Continuity is a web application that helps you discover new movies and track the
 ### Day 6 - 13 Oct
 
 > Implemented GA4, GTM and Cypress. Left to do is additonal test, WCAG and commenting.
+
+### Day 7 - 14 Oct
+
+> Added and cleaned up comments. Added another test. Updated documentation.

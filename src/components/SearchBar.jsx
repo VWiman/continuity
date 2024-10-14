@@ -7,6 +7,7 @@ const SearchBar = () => {
 	const [searchText, setSearchText] = useState("");
 	const dispatch = useDispatch();
 
+	// Handle search form on submit
 	const handleSearch = (e) => {
 		e.preventDefault();
 		setSearchText(searchText.trim());
@@ -15,6 +16,7 @@ const SearchBar = () => {
 		}
 	};
 
+	// Form for searching movies
 	return (
 		<form className="flex w-fit gap-4 justify-center items-center" onSubmit={(e) => handleSearch(e)}>
 			<input

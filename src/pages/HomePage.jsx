@@ -4,7 +4,7 @@ import { Helmet } from "react-helmet-async";
 
 export default function HomePage() {
 	const navigate = useNavigate();
-	const location = useLocation()
+	const location = useLocation();
 
 	const handleButtonClick = () => {
 		navigate("/search");
@@ -28,7 +28,7 @@ export default function HomePage() {
 				<meta property="og:url" content={location.pathname} />
 				<meta property="og:type" content="website" />
 
-				{/* Twitter */}
+				{/* Twitter / X */}
 				<meta name="twitter:card" content="summary" />
 				<meta name="twitter:title" content="Movie Continuity - Track Your Favorites" />
 				<meta

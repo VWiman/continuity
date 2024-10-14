@@ -1,6 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import Button from "./buttons/Button";
 import Star from "./icons/Star";
 import StarOutline from "./icons/StarOutline";
 import Modal from "./Modal";
@@ -9,38 +8,45 @@ import { fetchMovieDetails } from "../features/movies/movieDetails";
 import IconButton from "./buttons/IconButton";
 import { useLocation } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
+import DetailsButton from "./buttons/DetailsButton";
 
 const MovieCard = ({ movie }) => {
 	const dispatch = useDispatch();
 	const favorites = useSelector((state) => state.lists.favorites);
 	const movieDetails = useSelector((state) => state.movieDetails.movie);
 	const [isModalOpen, setIsModalOpen] = useState(false);
-	const location = useLocation()
+	const location = useLocation();
 
+	// Check if the movie is in the favorites list
 	const isFavorite = favorites.some((item) => item.imdbID === movie.imdbID);
 
+	// Fetch movie details when the modal is opened
 	useEffect(() => {
 		if (isModalOpen) {
 			dispatch(fetchMovieDetails(movie.imdbID));
 		}
 	}, [isModalOpen, dispatch, movie.imdbID]);
 
+	// Add movie to favorites list
 	function handleAddToFavorites(e) {
 		e.stopPropagation();
 		const movieObject = { listName: "favorites", movie: movie };
 		dispatch(addToList(movieObject));
 	}
 
+	// Remove movie from favorites list
 	function handleDeleteFromFavorites(e) {
 		e.stopPropagation();
 		const movieObject = { listName: "favorites", movie: movie };
 		dispatch(removeFromList(movieObject));
 	}
 
+	// Open the modal
 	function handleOpenModal() {
 		setIsModalOpen(true);
 	}
 
+	// Close the modal
 	function handleCloseModal() {
 		setIsModalOpen(false);
 	}
@@ -67,7 +73,7 @@ const MovieCard = ({ movie }) => {
 						<IconButton text={StarOutline} action={handleAddToFavorites} />
 					)}
 				</i>
-				<Button type={null} icon={null} text="Details" action={handleOpenModal} />
+				<DetailsButton type={null} icon={null} text="Details" action={handleOpenModal} />
 			</div>
 			<Modal isOpen={isModalOpen} onClose={handleCloseModal}>
 				{movieDetails.Actors ? (

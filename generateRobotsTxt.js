@@ -9,6 +9,7 @@ const __dirname = path.dirname(__filename);
 const environment = process.env.NODE_ENV;
 
 let robotsContent;
+
 // I allow robots for both dev and production
 if (environment === "production") {
 	robotsContent = `User-agent: *

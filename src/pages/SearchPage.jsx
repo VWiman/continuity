@@ -7,7 +7,7 @@ import { useLocation } from "react-router-dom";
 export default function SearchPage() {
 	const error = useSelector((state) => state.movies.error);
 	const movies = useSelector((state) => state.movies.movies);
-	const location = useLocation()
+	const location = useLocation();
 
 	return (
 		<>
@@ -28,7 +28,7 @@ export default function SearchPage() {
 				<meta property="og:url" content={location.pathname} />
 				<meta property="og:type" content="website" />
 
-				{/* Twitter */}
+				{/* Twitter / X */}
 				<meta name="twitter:card" content="summary" />
 				<meta name="twitter:title" content="Search Movies & Shows - Find Information About Any Movie or TV Show" />
 				<meta

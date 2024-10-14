@@ -5,8 +5,10 @@ import Close from "./icons/Close";
 import Bars from "./icons/Bars";
 
 const Header = () => {
+	// State to manage if the menu is open or closed
 	const [isOpen, setIsOpen] = useState(false);
 
+	// Function to toggle the menu state
 	const toggleMenu = () => {
 		setIsOpen(!isOpen);
 	};

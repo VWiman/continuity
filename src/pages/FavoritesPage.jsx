@@ -6,7 +6,7 @@ import { useLocation } from "react-router-dom";
 export default function FavoritesPage() {
 	const movies = useSelector((state) => state.lists.favorites);
 	const error = null;
-	const location = useLocation()
+	const location = useLocation();
 
 	return (
 		<>
@@ -26,7 +26,7 @@ export default function FavoritesPage() {
 				<meta property="og:url" content={location.pathname} />
 				<meta property="og:type" content="website" />
 
-				{/* Twitter */}
+				{/* Twitter / X */}
 				<meta name="twitter:card" content="summary" />
 				<meta name="twitter:title" content="Your Favorite Movies - Track and View Your Favorites" />
 				<meta

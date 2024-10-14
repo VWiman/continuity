@@ -1,8 +1,11 @@
 import Close from "./icons/Close";
 
 const Modal = ({ isOpen, onClose, children }) => {
+
+	// Return null if modal is not open
 	if (!isOpen) return null;
 
+	// Return modal that covers screen
 	return (
 		<div
 			className="fixed inset-0 z-[100] h-screen flex items-center justify-center bg-white md:bg-black md:bg-opacity-50 backdrop-blur-sm mb-auto"

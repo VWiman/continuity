@@ -10,12 +10,12 @@ const generateSitemap = async () => {
 	const writeStream = createWriteStream("./public/sitemap.xml");
 	sitemap.pipe(writeStream);
 
-	// Static routes from routes.js
+	// Static routes from routes.js with higher priority for homepage
 	routes.forEach((route) => {
 		sitemap.write({
-			url: route.path, // Use the path from your routes
-			changefreq: "daily", // Adjust as needed
-			priority: route.path === "/" ? 1.0 : 0.7, // Higher priority for homepage
+			url: route.path,
+			changefreq: "daily",
+			priority: route.path === "/" ? 1.0 : 0.7,
 		});
 	});
 

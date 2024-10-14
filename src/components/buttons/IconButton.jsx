@@ -4,7 +4,7 @@ const IconButton = ({ text, action }) => {
 		<button
 			className="text-yellow-400 py-0 px-0"
 			name="favorite"
-			aria-label="Favorite"
+			aria-label="Favorite button"
 			type={null}
 			onClick={action}>
 			{text}

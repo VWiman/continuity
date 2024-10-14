@@ -12,6 +12,7 @@ export const fetchMovies = createAsyncThunk("movies/fetchMovies", async (searchV
 			throw new Error(`Failed to fetch: ${response.statusText}`);
 		}
 
+		// Handle the response
 		const result = await response.json();
 
 		// Throw error if result does not include a response or it could not be extracted
@@ -22,6 +23,7 @@ export const fetchMovies = createAsyncThunk("movies/fetchMovies", async (searchV
 		// Return the result if there are no errors
 		console.log(result.Search);
 		return result.Search;
+
 		// Throw error if there is no response
 	} catch (error) {
 		return thunkAPI.rejectWithValue(`Failed to get response: ${error.message}`);
@@ -36,6 +38,7 @@ const initialState = {
 };
 
 // Create a slice with functions to clear fetched movies and handle fetch
+// Also handle errors and status
 const moviesSlice = createSlice({
 	name: "movies",
 	initialState,
