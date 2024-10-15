@@ -16,6 +16,7 @@ Continuity is a web application that helps you discover new movies and track the
 
 ## File Structure
 
+``` plaintext
 📦continuity
  ┣ 📂public
  ┃ ┣ 📜favicon.svg
@@ -72,6 +73,7 @@ Continuity is a web application that helps you discover new movies and track the
  ┣ 📜.generate-sitemap.js
  ┣ 📜.generateRobotsTxt.js
  ┣ 📜.index.html
+```
 
 ## Progress
 
@@ -103,6 +105,6 @@ Continuity is a web application that helps you discover new movies and track the
 
 > Added and cleaned up comments. Added another test. Updated documentation.
 
-### Day 7 - 15 Oct
+### Day 8 - 15 Oct
 
 > Implemented full Crud, some commenting and fine tuning suffered. Left to do is commenting, fine tuning and planning presentation.
