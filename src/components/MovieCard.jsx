@@ -15,7 +15,7 @@ import ModalPopup from "./ModalPopup";
 const MovieCard = ({ movie, showToast }) => {
 	const dispatch = useDispatch();
 	const favorites = useSelector((state) => state.lists.favorites);
-	const movieDetails = useSelector((state) => state.movieDetails.movie);
+	const [movieDetails, setMovieDetails] = useState(null);
 	const movieDetailsError = useSelector((state) => state.movieDetails.error);
 	const [isModalOpen, setIsModalOpen] = useState(false);
 	const [isModalPopupOpen, setIsModalPopupOpen] = useState(false);
@@ -28,9 +28,20 @@ const MovieCard = ({ movie, showToast }) => {
 	// Fetch movie details when the modal is opened
 	useEffect(() => {
 		if (isModalOpen) {
-			dispatch(fetchMovieDetails(movie.imdbID));
+			const loadedDetails = favorites.find((item) => item.imdbID === movie.imdbID);
+			if (loadedDetails) {
+				setMovieDetails(loadedDetails);
+			} else {
+				dispatch(fetchMovieDetails(movie.imdbID))
+					.then((result) => {
+						setMovieDetails(result.payload);
+					})
+					.catch((error) => {
+						console.error("Failed to fetch movie details:", error);
+					});
+			}
 		}
-	}, [isModalOpen, dispatch, movie.imdbID]);
+	}, [isModalOpen, dispatch, movie.imdbID, favorites]);
 
 	useEffect(() => {
 		if (isAddingFavorite) {
@@ -53,7 +64,7 @@ const MovieCard = ({ movie, showToast }) => {
 			// Call the async function
 			fetchFavorite();
 		}
-	}, [isAddingFavorite, setIsAddingFavorite]);
+	}, [isAddingFavorite]);
 
 	// Add movie to favorites list
 	function handleAddToFavorites(e) {
@@ -123,7 +134,7 @@ const MovieCard = ({ movie, showToast }) => {
 			<ModalPopup isOpen={isModalPopupOpen} onClose={handleCloseModalPopup} onAction={handleDeleteFromFavorites} />
 			{/* Details Modal */}
 			<Modal isOpen={isModalOpen} onClose={handleCloseModal}>
-				{movieDetails.Actors ? (
+				{movieDetails != null && movieDetails.Actors ? (
 					<div className="flex flex-col item-center my-3 w-full">
 						{isModalOpen && (
 							<Helmet>
@@ -144,9 +155,15 @@ const MovieCard = ({ movie, showToast }) => {
 
 						<div className="w-full flex flex-col justify-center items-center sm:flex-row">
 							<div className="w-auto sm:mr-4 mb-4 sm:mb-0 rounded-2xl shadow-sm shadow-black/80 border-4">
-								<div className="w-48 sm:w-56 rounded-2xl overflow-hidden">
-									<img src={movie.Poster} alt={movie.Title} className="w-full" />
-								</div>
+								{movie.Poster ? (
+									<div className="w-48 sm:w-56 rounded-2xl overflow-hidden">
+										<img src={movie.Poster} alt={movie.Title} className="w-full" />
+									</div>
+								) : (
+									<div className="min-w-16 max-w-16 max-h-[100px] sm:max-h-full md:max-w-28 -mr-24 md:-mr-32 -mt-4 mb-3 ml-2 md:ml-14 z-50 rounded-2xl overflow-hidden shadow-sm shadow-black/80 bg-gray-200 flex items-center justify-center">
+										<span className="text-xs text-gray-500">No Image</span>
+									</div>
+								)}
 							</div>
 
 							<ul className="flex flex-col h-full justify-center gap-2 sm:gap-3 text-[10px] sm:text-xs md:text-sm bg-black text-white p-4 sm:py-6 sm:px-8 rounded-2xl shadow-sm shadow-black/80 text-center sm:text-left w-48 sm:w-auto mx-h-[320px] tracking-wide">

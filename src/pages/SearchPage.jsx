@@ -8,6 +8,7 @@ export default function SearchPage() {
 	const error = useSelector((state) => state.movies.error);
 	const movies = useSelector((state) => state.movies.movies);
 	const location = useLocation();
+	
 
 	return (
 		<>

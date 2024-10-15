@@ -6,6 +6,7 @@ const MovieList = ({ movies, error }) => {
 	const [isToastVisible, setIsToastVisible] = useState(false);
 	const [toastMessage, setToastMessage] = useState("");
 
+	// Display toast for 5 sec
 	const showToast = (message) => {
 			setToastMessage(message);
 			setIsToastVisible(true);

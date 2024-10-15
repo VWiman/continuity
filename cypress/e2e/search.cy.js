@@ -23,7 +23,7 @@ describe("Search test", () => {
 			// Step 5: Click the first "Details" button
 			cy.log("Clicking on the first Details button");
 			cy.get('button[name="details"]').first().click();
-			cy.contains("Inception");
+			cy.contains("Released");
 		});
 	});
 });

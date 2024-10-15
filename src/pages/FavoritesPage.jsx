@@ -2,11 +2,24 @@ import { useSelector } from "react-redux";
 import MovieList from "../components/MovieList";
 import { Helmet } from "react-helmet-async";
 import { useLocation } from "react-router-dom";
+import Modal from "../components/Modal";
+import { useState } from "react";
+import AddMovieForm from "../components/AddMovieForm";
 
 export default function FavoritesPage() {
 	const movies = useSelector((state) => state.lists.favorites);
 	const error = null;
 	const location = useLocation();
+
+	const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+
+	const handleOpenAddModal = () => {
+		setIsAddModalOpen(true);
+	};
+
+	const handleCloseAddModal = () => {
+		setIsAddModalOpen(false);
+	};
 
 	return (
 		<>
@@ -42,6 +55,11 @@ export default function FavoritesPage() {
 			<div className="flex flex-col gap-2 md:text-xl px-1 md:px-0 items-center">
 				<MovieList movies={movies} error={error} />
 			</div>
+			<button onClick={handleOpenAddModal}>Add Movie</button>
+			{/* Add Movie Modal */}
+			<Modal isOpen={isAddModalOpen} onClose={handleCloseAddModal}>
+				<AddMovieForm onClose={handleCloseAddModal} />
+			</Modal>
 		</>
 	);
 }
