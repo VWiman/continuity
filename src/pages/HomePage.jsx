@@ -39,9 +39,9 @@ export default function HomePage() {
 			</Helmet>
 
 			<div className="w-fit mx-auto text-center">
-				<h2 className="text-2xl sm:text-3xl md:text-5xl leading-none font-semibold font-serif uppercase px-2">
-					maintain <span className="text-white bg-movie-red-600 px-2 rounded-xl">movie</span> continuity and track your{" "}
-					<span className="text-yellow-400 bg-black px-2 rounded-xl">favorites</span>
+				<h2 className="text-2xl sm:text-3xl md:text-5xl font-black tracking-wide leading-none uppercase px-2">
+					maintain <span className="text-white bg-movie-red-600 px-2 leading-snug rounded-xl">movie</span> continuity and track your{" "}
+					<span className="text-yellow-400 bg-black px-2 leading-snug rounded-xl">favorites</span>
 				</h2>
 			</div>
 			<div className="flex flex-col w-fit gap-4 md:mx-auto py-4 items-center">

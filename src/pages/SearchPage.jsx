@@ -39,7 +39,7 @@ export default function SearchPage() {
 			</Helmet>
 
 			<div className="w-fit mx-auto text-center">
-				<h2 className="text-2xl sm:text-3xl md:text-5xl leading-none font-semibold font-serif uppercase px-2">
+				<h2 className="text-2xl sm:text-3xl md:text-5xl font-black tracking-wide leading-none uppercase px-2">
 					search for any movie or show
 				</h2>
 			</div>
