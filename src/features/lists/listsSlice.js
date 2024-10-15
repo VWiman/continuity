@@ -14,7 +14,6 @@ const listsSlice = createSlice({
 	name: "lists",
 	initialState,
 	reducers: {
-
 		addToList: (state, action) => {
 			const { listName, movie } = action.payload;
 			if (!state[listName].find((item) => item.imdbID === movie.imdbID)) {
@@ -28,8 +27,15 @@ const listsSlice = createSlice({
 			state[listName] = state[listName].filter((item) => item.imdbID !== movie.imdbID);
 			console.log(movie.Title, " removed from ", listName);
 		},
+		updateMovieInList: (state, action) => {
+			const { listName, movie } = action.payload;
+			const index = state[listName].findIndex((item) => item.imdbID === movie.imdbID);
+			if (index !== -1) {
+				state[listName][index] = movie;
+			}
+		},
 	},
 });
 
-export const { addToList, removeFromList } = listsSlice.actions;
+export const { addToList, removeFromList, updateMovieInList } = listsSlice.actions;
 export default listsSlice.reducer;

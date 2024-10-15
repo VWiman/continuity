@@ -2,9 +2,10 @@ import { useSelector } from "react-redux";
 import MovieList from "../components/MovieList";
 import { Helmet } from "react-helmet-async";
 import { useLocation } from "react-router-dom";
-import Modal from "../components/Modal";
+import Modal from "../components/modals/Modal";
 import { useState } from "react";
-import AddMovieForm from "../components/AddMovieForm";
+import AddMovieForm from "../components/forms/AddMovieForm";
+import CtaButton from "../components/buttons/CtaButton";
 
 export default function FavoritesPage() {
 	const movies = useSelector((state) => state.lists.favorites);
@@ -50,13 +51,16 @@ export default function FavoritesPage() {
 			</Helmet>
 
 			<div className="w-fit mx-auto text-center">
-				<h2 className="text-xl sm:text-2xl md:text-5xl font-semibold font-serif uppercase px-2">favorites</h2>
+				<h2 className="text-2xl sm:text-3xl md:text-5xl leading-none font-semibold font-serif uppercase px-2">
+					favorites
+				</h2>
 			</div>
-			<div className="flex flex-col gap-2 md:text-xl px-1 md:px-0 items-center">
+			<div className="flex flex-col gap-1 md:text-xl px-1 md:px-0 items-center mb-10">
 				<MovieList movies={movies} error={error} />
+				{/* Open modal button */}
+				<CtaButton text={"Add Custom Movie"} action={handleOpenAddModal} />
 			</div>
-			<button onClick={handleOpenAddModal}>Add Movie</button>
-			{/* Add Movie Modal */}
+			{/* Custom movie modal */}
 			<Modal isOpen={isAddModalOpen} onClose={handleCloseAddModal}>
 				<AddMovieForm onClose={handleCloseAddModal} />
 			</Modal>

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { fetchMovies } from "../features/movies/moviesSlice";
-import SubmitButton from "./buttons/SubmitButton";
+import { fetchMovies } from "../../features/movies/moviesSlice";
+import SubmitButton from "../buttons/SubmitButton";
 
 const SearchBar = () => {
 	const [searchText, setSearchText] = useState("");

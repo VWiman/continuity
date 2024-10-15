@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import MovieList from "../components/MovieList";
-import SearchBar from "../components/SearchBar";
+import SearchBar from "../components/forms/SearchBar";
 import { Helmet } from "react-helmet-async";
 import { useLocation } from "react-router-dom";
 
@@ -8,7 +8,6 @@ export default function SearchPage() {
 	const error = useSelector((state) => state.movies.error);
 	const movies = useSelector((state) => state.movies.movies);
 	const location = useLocation();
-	
 
 	return (
 		<>
@@ -40,7 +39,7 @@ export default function SearchPage() {
 			</Helmet>
 
 			<div className="w-fit mx-auto text-center">
-				<h2 className="text-xl sm:text-2xl md:text-5xl font-semibold font-serif uppercase px-2">
+				<h2 className="text-2xl sm:text-3xl md:text-5xl leading-none font-semibold font-serif uppercase px-2">
 					search for any movie or show
 				</h2>
 			</div>

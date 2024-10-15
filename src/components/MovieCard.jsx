@@ -2,15 +2,18 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import Star from "./icons/Star";
 import StarOutline from "./icons/StarOutline";
-import Modal from "./Modal";
+import Modal from "./modals/Modal";
 import { addToList, removeFromList } from "../features/lists/listsSlice";
-import { fetchMovieDetails } from "../features/movies/movieDetails";
+import { fetchMovieDetails } from "../features/movies/movieDetailsSlice";
 import IconButton from "./buttons/IconButton";
 import { useLocation } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import DetailsButton from "./buttons/DetailsButton";
 import Spinner from "./icons/Spinner";
-import ModalPopup from "./ModalPopup";
+import ModalPopup from "./modals/ModalPopup";
+import AddMovieForm from "./forms/AddMovieForm";
+import Edit from "./icons/Edit";
+import ModalEdit from "./modals/ModalEdit";
 
 const MovieCard = ({ movie, showToast }) => {
 	const dispatch = useDispatch();
@@ -21,13 +24,44 @@ const MovieCard = ({ movie, showToast }) => {
 	const [isModalPopupOpen, setIsModalPopupOpen] = useState(false);
 	const location = useLocation();
 	const [isAddingFavorite, setIsAddingFavorite] = useState(false);
+	const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+	const noImage = "/temp.webp";
+
+	// Handle the editing modal and fetch from local or api to fill in existing fields
+	const handleOpenEditModal = (e) => {
+		e.stopPropagation();
+
+		if (!movieDetails) {
+			const loadedDetails = favorites.find((item) => item.imdbID === movie.imdbID);
+			if (loadedDetails) {
+				setMovieDetails(loadedDetails);
+				setIsEditModalOpen(true);
+			} else {
+				dispatch(fetchMovieDetails(movie.imdbID))
+					.then((result) => {
+						setMovieDetails(result.payload);
+						setIsEditModalOpen(true);
+					})
+					.catch((error) => {
+						console.error("Failed to fetch movie details:", error);
+					});
+			}
+		} else {
+			setIsEditModalOpen(true);
+		}
+	};
+
+	// Close editing modal
+	const handleCloseEditModal = () => {
+		setIsEditModalOpen(false);
+	};
 
 	// Check if the movie is in the favorites list
 	const isFavorite = favorites.some((item) => item.imdbID === movie.imdbID);
 
 	// Fetch movie details when the modal is opened
 	useEffect(() => {
-		if (isModalOpen) {
+		if ((isModalOpen || isEditModalOpen) && movie) {
 			const loadedDetails = favorites.find((item) => item.imdbID === movie.imdbID);
 			if (loadedDetails) {
 				setMovieDetails(loadedDetails);
@@ -41,8 +75,9 @@ const MovieCard = ({ movie, showToast }) => {
 					});
 			}
 		}
-	}, [isModalOpen, dispatch, movie.imdbID, favorites]);
+	}, [isModalOpen, isEditModalOpen, dispatch, movie, favorites]);
 
+	// Add movie to favorites (and fetch details)
 	useEffect(() => {
 		if (isAddingFavorite) {
 			async function fetchFavorite() {
@@ -95,8 +130,8 @@ const MovieCard = ({ movie, showToast }) => {
 
 	// Open the modalPopup
 	function handleOpenModalPopup(e) {
-		setIsModalPopupOpen(true);
 		e.stopPropagation();
+		setIsModalPopupOpen(true);
 	}
 
 	// Close the modalPopup
@@ -105,12 +140,10 @@ const MovieCard = ({ movie, showToast }) => {
 	}
 
 	return (
-		<li className="flex w-full justify-between p-4 my-8 movieItem" key={movie.imdbID}>
-			{movie.Poster && (
-				<div className="min-w-16 max-w-16 max-h-[100px] sm:max-h-full md:max-w-28 -mr-24 md:-mr-32 -mt-4 mb-3 ml-2 md:ml-14 z-50 rounded-2xl overflow-hidden shadow-sm shadow-black/80">
-					<img className="h-full aspect-auto" src={movie.Poster} alt={movie.Title} />
-				</div>
-			)}
+		<li className="flex w-full justify-between p-4 movieItem" key={movie.imdbID}>
+			<div className="min-w-16 max-w-16 max-h-[100px] sm:max-h-full md:max-w-28 -mr-24 md:-mr-32 -mt-4 mb-3 ml-2 md:ml-14 z-50 rounded-2xl overflow-hidden shadow-sm shadow-black/80">
+				<img className="h-full aspect-auto" src={movie.Poster ? movie.Poster : noImage} alt={movie.Title} />
+			</div>
 			<div className="flex w-full p-4 pl-20 md:pl-36 bg-white rounded-xl hover:bg-white/95 shadow-md select-none items-center hover:shadow-none outline-4 hover:outline outline-black/10">
 				<h3 className="flex flex-col mr-auto self-start">
 					<span className="w-fit text-[8px] md:text-xs font-medium text-white bg-movie-red-600 leading-none px-1.5 py-1.5 uppercase rounded-md shadow shadow-black/20">
@@ -119,6 +152,15 @@ const MovieCard = ({ movie, showToast }) => {
 					<span className="text-sm md:text-xl font-semibold mt-2">{movie.Title}</span>
 					<span className="text-xs md:text-md font-medium text-gray-400">{movie.Year}</span>
 				</h3>
+
+				{/* {Edit} */}
+				{location.pathname === "/favorites" && (
+					<i className="self-start md:self-center mr-2 -mb-1 -ml-8">
+						{isFavorite && <IconButton text={<Edit />} action={handleOpenEditModal} />}
+					</i>
+				)}
+
+				{/* Spinner, star or filled star */}
 				<i className="self-start md:self-center mr-2 -mb-1">
 					{isAddingFavorite ? (
 						<Spinner />
@@ -134,7 +176,7 @@ const MovieCard = ({ movie, showToast }) => {
 			<ModalPopup isOpen={isModalPopupOpen} onClose={handleCloseModalPopup} onAction={handleDeleteFromFavorites} />
 			{/* Details Modal */}
 			<Modal isOpen={isModalOpen} onClose={handleCloseModal}>
-				{movieDetails != null && movieDetails.Actors ? (
+				{movieDetails !== null && movieDetails.Actors ? (
 					<div className="flex flex-col item-center my-3 w-full">
 						{isModalOpen && (
 							<Helmet>
@@ -155,15 +197,9 @@ const MovieCard = ({ movie, showToast }) => {
 
 						<div className="w-full flex flex-col justify-center items-center sm:flex-row">
 							<div className="w-auto sm:mr-4 mb-4 sm:mb-0 rounded-2xl shadow-sm shadow-black/80 border-4">
-								{movie.Poster ? (
-									<div className="w-48 sm:w-56 rounded-2xl overflow-hidden">
-										<img src={movie.Poster} alt={movie.Title} className="w-full" />
-									</div>
-								) : (
-									<div className="min-w-16 max-w-16 max-h-[100px] sm:max-h-full md:max-w-28 -mr-24 md:-mr-32 -mt-4 mb-3 ml-2 md:ml-14 z-50 rounded-2xl overflow-hidden shadow-sm shadow-black/80 bg-gray-200 flex items-center justify-center">
-										<span className="text-xs text-gray-500">No Image</span>
-									</div>
-								)}
+								<div className="w-48 sm:w-56 rounded-2xl overflow-hidden">
+									<img src={movie.Poster ? movie.Poster : noImage} alt={movie.Title} className="w-full" />
+								</div>
 							</div>
 
 							<ul className="flex flex-col h-full justify-center gap-2 sm:gap-3 text-[10px] sm:text-xs md:text-sm bg-black text-white p-4 sm:py-6 sm:px-8 rounded-2xl shadow-sm shadow-black/80 text-center sm:text-left w-48 sm:w-auto mx-h-[320px] tracking-wide">
@@ -201,6 +237,12 @@ const MovieCard = ({ movie, showToast }) => {
 					</div>
 				)}
 			</Modal>
+			{/* Edit modal */}
+			{isEditModalOpen && ( 
+				<ModalEdit isOpen={isEditModalOpen} onClose={handleCloseEditModal}>
+					<AddMovieForm onClose={handleCloseEditModal} existingMovieData={movieDetails} isEditing={true} />
+				</ModalEdit>
+			)}
 		</li>
 	);
 };

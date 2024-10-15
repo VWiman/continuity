@@ -1,6 +1,4 @@
-import Close from "./icons/Close";
-
-const Modal = ({ isOpen, onClose, children }) => {
+const ModalEdit = ({ isOpen, onClose, children }) => {
 	// Return null if modal is not open
 	if (!isOpen) return null;
 
@@ -11,11 +9,8 @@ const Modal = ({ isOpen, onClose, children }) => {
 			onClick={onClose}>
 			<div className="h-full w-full md:flex md:justify-center overflow-scroll">
 				<div
-					className="relative self-center md:ml-8 flex w-fit md:w-8/12 h-fit bg-white rounded-lg md:shadow-lg"
+					className="relative self-center md:ml-8 flex w-fit md:w-8/12 h-fit"
 					onClick={(e) => e.stopPropagation()}>
-					<button className="absolute top-3 right-3 text-black text-2xl" onClick={onClose}>
-						<Close />
-					</button>
 					<div className="flex flex-col items-center justify-center w-full p-8">{children}</div>
 				</div>
 			</div>
@@ -23,4 +18,4 @@ const Modal = ({ isOpen, onClose, children }) => {
 	);
 };
 
-export default Modal;
+export default ModalEdit;
