@@ -146,7 +146,13 @@ const AddMovieForm = ({ onClose, existingMovieData = null, isEditing = false }) 
 							</label>
 							<label className="flex flex-col gap-2 py-0.5 my-1">
 								Plot:
-								<textarea name="Plot" value={movieData.Plot} onChange={handleChange} required />
+								<textarea
+									className="outline outline-gray-200 p-1"
+									name="Plot"
+									value={movieData.Plot}
+									onChange={handleChange}
+									required
+								/>
 							</label>
 							<label className="flex flex-col gap-2 py-0.5 my-1">
 								IMDb Rating:

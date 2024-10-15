@@ -2,10 +2,10 @@ import { useSelector } from "react-redux";
 import MovieList from "../components/MovieList";
 import { Helmet } from "react-helmet-async";
 import { useLocation } from "react-router-dom";
-import Modal from "../components/modals/Modal";
 import { useState } from "react";
 import AddMovieForm from "../components/forms/AddMovieForm";
 import CtaButton from "../components/buttons/CtaButton";
+import ModalEdit from "../components/modals/ModalEdit";
 
 export default function FavoritesPage() {
 	const movies = useSelector((state) => state.lists.favorites);
@@ -61,9 +61,9 @@ export default function FavoritesPage() {
 				<CtaButton text={"Add Custom Movie"} action={handleOpenAddModal} />
 			</div>
 			{/* Custom movie modal */}
-			<Modal isOpen={isAddModalOpen} onClose={handleCloseAddModal}>
+			<ModalEdit isOpen={isAddModalOpen} onClose={handleCloseAddModal}>
 				<AddMovieForm onClose={handleCloseAddModal} />
-			</Modal>
+			</ModalEdit>
 		</>
 	);
 }
