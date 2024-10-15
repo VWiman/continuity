@@ -37,9 +37,11 @@ export default function FavoritesPage() {
 			</Helmet>
 
 			<div className="w-fit mx-auto text-center">
-				<h2 className="text-2xl md:text-5xl font-semibold uppercase font-serif px-2">favorites</h2>
+				<h2 className="text-xl sm:text-2xl md:text-5xl font-semibold font-serif uppercase px-2">favorites</h2>
 			</div>
-			<MovieList movies={movies} error={error} />
+			<div className="flex flex-col gap-2 md:text-xl px-1 md:px-0 items-center">
+				<MovieList movies={movies} error={error} />
+			</div>
 		</>
 	);
 }

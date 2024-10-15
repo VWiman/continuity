@@ -9,13 +9,18 @@ import IconButton from "./buttons/IconButton";
 import { useLocation } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import DetailsButton from "./buttons/DetailsButton";
+import Spinner from "./icons/Spinner";
+import ModalPopup from "./ModalPopup";
 
-const MovieCard = ({ movie }) => {
+const MovieCard = ({ movie, showToast }) => {
 	const dispatch = useDispatch();
 	const favorites = useSelector((state) => state.lists.favorites);
 	const movieDetails = useSelector((state) => state.movieDetails.movie);
+	const movieDetailsError = useSelector((state) => state.movieDetails.error);
 	const [isModalOpen, setIsModalOpen] = useState(false);
+	const [isModalPopupOpen, setIsModalPopupOpen] = useState(false);
 	const location = useLocation();
+	const [isAddingFavorite, setIsAddingFavorite] = useState(false);
 
 	// Check if the movie is in the favorites list
 	const isFavorite = favorites.some((item) => item.imdbID === movie.imdbID);
@@ -27,18 +32,44 @@ const MovieCard = ({ movie }) => {
 		}
 	}, [isModalOpen, dispatch, movie.imdbID]);
 
+	useEffect(() => {
+		if (isAddingFavorite) {
+			async function fetchFavorite() {
+				try {
+					// Fetch the movie details
+					const result = await dispatch(fetchMovieDetails(movie.imdbID)).unwrap();
+					// Add the detailed movie to the favorites list
+					const movieObject = { listName: "favorites", movie: result };
+					dispatch(addToList(movieObject));
+					// Show the toast
+					showToast(`Added ${movie.Title} to favorites`);
+				} catch (error) {
+					// Show error if it fails
+					showToast(movieDetailsError || "An error occurred while adding to favorites.");
+				} finally {
+					setIsAddingFavorite(false);
+				}
+			}
+			// Call the async function
+			fetchFavorite();
+		}
+	}, [isAddingFavorite, setIsAddingFavorite]);
+
 	// Add movie to favorites list
 	function handleAddToFavorites(e) {
 		e.stopPropagation();
-		const movieObject = { listName: "favorites", movie: movie };
-		dispatch(addToList(movieObject));
+		if (!isAddingFavorite) {
+			setIsAddingFavorite(true);
+		}
 	}
 
 	// Remove movie from favorites list
 	function handleDeleteFromFavorites(e) {
 		e.stopPropagation();
+		showToast(`Removed ${movie.Title} from favorites`);
 		const movieObject = { listName: "favorites", movie: movie };
 		dispatch(removeFromList(movieObject));
+		setIsModalPopupOpen(false);
 	}
 
 	// Open the modal
@@ -51,14 +82,25 @@ const MovieCard = ({ movie }) => {
 		setIsModalOpen(false);
 	}
 
+	// Open the modalPopup
+	function handleOpenModalPopup(e) {
+		setIsModalPopupOpen(true);
+		e.stopPropagation();
+	}
+
+	// Close the modalPopup
+	function handleCloseModalPopup() {
+		setIsModalPopupOpen(false);
+	}
+
 	return (
 		<li className="flex w-full justify-between p-4 my-8 movieItem" key={movie.imdbID}>
 			{movie.Poster && (
-				<div className="min-w-16 max-w-16 max-h-[100px] sm:max-h-full md:max-w-28 -mr-24 md:-mr-32 -mt-4 mb-3 ml-2 md:ml-14 z-50 rounded-2xl overflow-hidden cursor-pointer shadow-sm shadow-black/80">
+				<div className="min-w-16 max-w-16 max-h-[100px] sm:max-h-full md:max-w-28 -mr-24 md:-mr-32 -mt-4 mb-3 ml-2 md:ml-14 z-50 rounded-2xl overflow-hidden shadow-sm shadow-black/80">
 					<img className="h-full aspect-auto" src={movie.Poster} alt={movie.Title} />
 				</div>
 			)}
-			<div className="flex w-full p-4 pl-20 md:pl-36 bg-white rounded-xl hover:bg-gray-50 shadow-md select-none cursor-pointer items-center">
+			<div className="flex w-full p-4 pl-20 md:pl-36 bg-white rounded-xl hover:bg-white/95 shadow-md select-none items-center hover:shadow-none outline-4 hover:outline outline-black/10">
 				<h3 className="flex flex-col mr-auto self-start">
 					<span className="w-fit text-[8px] md:text-xs font-medium text-white bg-movie-red-600 leading-none px-1.5 py-1.5 uppercase rounded-md shadow shadow-black/20">
 						{movie.Type}
@@ -66,15 +108,20 @@ const MovieCard = ({ movie }) => {
 					<span className="text-sm md:text-xl font-semibold mt-2">{movie.Title}</span>
 					<span className="text-xs md:text-md font-medium text-gray-400">{movie.Year}</span>
 				</h3>
-				<i className="self-start md:self-center mr-4 -mb-1">
-					{isFavorite ? (
-						<IconButton text={Star} action={handleDeleteFromFavorites} />
+				<i className="self-start md:self-center mr-2 -mb-1">
+					{isAddingFavorite ? (
+						<Spinner />
+					) : isFavorite ? (
+						<IconButton text={<Star />} action={handleOpenModalPopup} />
 					) : (
-						<IconButton text={StarOutline} action={handleAddToFavorites} />
+						<IconButton text={<StarOutline />} action={handleAddToFavorites} />
 					)}
 				</i>
 				<DetailsButton type={null} icon={null} text="Details" action={handleOpenModal} />
 			</div>
+			{/* Popup Modal for delete */}
+			<ModalPopup isOpen={isModalPopupOpen} onClose={handleCloseModalPopup} onAction={handleDeleteFromFavorites} />
+			{/* Details Modal */}
 			<Modal isOpen={isModalOpen} onClose={handleCloseModal}>
 				{movieDetails.Actors ? (
 					<div className="flex flex-col item-center my-3 w-full">
@@ -126,15 +173,14 @@ const MovieCard = ({ movie }) => {
 							</ul>
 						</div>
 
-						{/* Title and Description Below Image and Details */}
 						<div className="w-full mt-4">
 							<h4 className="text-2xl md:text-4xl font-bold text-center">{movieDetails.Title}</h4>
 							<p className="text-sm sm:text-lg text-center mx-auto max-w-2xl mt-2">{movieDetails.Plot}</p>
 						</div>
 					</div>
 				) : (
-					<div className="flex w-full text-center h-32 justify-center items-center">
-						<p>Loading...</p>
+					<div className="flex w-screen text-center h-32 justify-center items-center">
+						<p className="text-center">Loading...</p>
 					</div>
 				)}
 			</Modal>

@@ -1,6 +1,20 @@
+import { useState } from "react";
 import MovieCard from "./MovieCard";
+import Toast from "./Toast";
 
 const MovieList = ({ movies, error }) => {
+	const [isToastVisible, setIsToastVisible] = useState(false);
+	const [toastMessage, setToastMessage] = useState("");
+
+	const showToast = (message) => {
+			setToastMessage(message);
+			setIsToastVisible(true);
+			setTimeout(() => {
+				setIsToastVisible(false);
+			}, 5000);
+		};
+
+
 	// If there's an error and no movies, then display the error message
 	if (error && movies.length === 0) {
 		return <p>{error}</p>;
@@ -10,8 +24,10 @@ const MovieList = ({ movies, error }) => {
 	return (
 		<ul id="movieList" className="w-full h-fit">
 			{movies.map((movie) => (
-				<MovieCard key={movie.imdbID} movie={movie} />
+				<MovieCard key={movie.imdbID} movie={movie} showToast={showToast} />
 			))}
+			{/* Toast */}
+			{isToastVisible && <Toast message={toastMessage} onClose={() => setIsToastVisible(false)} />}
 		</ul>
 	);
 };

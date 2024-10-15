@@ -43,7 +43,7 @@ export default function SearchPage() {
 					search for any movie or show
 				</h2>
 			</div>
-			<div className="flex flex-col gap-2 md:text-xl px-4 md:px-0 items-center">
+			<div className="flex flex-col gap-2 md:text-xl px-1 md:px-0 items-center">
 				<SearchBar />
 				<MovieList movies={movies} error={error} />
 			</div>
