@@ -52,7 +52,7 @@ export default function FavoritesPage() {
 
 			<div className="w-fit mx-auto text-center">
 				<h2 className="text-2xl sm:text-3xl md:text-5xl font-black tracking-wide leading-none uppercase px-2">
-					favorites
+					<span className="text-yellow-400 bg-black px-2 leading-snug rounded-xl">favorites</span>
 				</h2>
 			</div>
 			<div className="flex flex-col gap-1 md:text-xl px-1 md:px-0 items-center mb-10">

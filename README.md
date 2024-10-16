@@ -1,6 +1,6 @@
 # Continuity - Find New Movies and Track What You Have Seen
 
-Continuity is a web application that helps you discover new movies and track the ones you have already watched. This project utilizes modern frontend libraries and state management techniques to provide a seamless user experience.
+Continuity is a web application that helps you discover new movies and favorite the ones you have already watched. This project utilizes modern frontend libraries and state management techniques to provide a smooth user experience.
 
 ## Libraries Used
 
@@ -108,3 +108,7 @@ Continuity is a web application that helps you discover new movies and track the
 ### Day 8 - 15 Oct
 
 > Implemented full Crud, some commenting and fine tuning suffered. Left to do is commenting, fine tuning and planning presentation.
+
+### Day 9 - 16 Oct
+
+> Fine tuned some parts, implemented filtering for movies, games and shows in search.

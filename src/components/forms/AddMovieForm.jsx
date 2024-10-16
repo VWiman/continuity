@@ -57,7 +57,7 @@ const AddMovieForm = ({ onClose, existingMovieData = null, isEditing = false }) 
 		const { Title, Year, Director, Actors, Genre, Plot, imdbRating } = newMovieData;
 
 		if (!Title || !Year || !Director || !Actors || !Genre || !Plot || !imdbRating) {
-			setFormError("Please fill in all required fields.");
+			setFormError("Please fill in all  fields.");
 			return;
 		}
 
@@ -97,7 +97,7 @@ const AddMovieForm = ({ onClose, existingMovieData = null, isEditing = false }) 
 									name="Title"
 									value={movieData.Title}
 									onChange={handleChange}
-									required
+									
 								/>
 							</label>
 							<label className="flex flex-col gap-2 py-0.5 my-1">
@@ -108,7 +108,7 @@ const AddMovieForm = ({ onClose, existingMovieData = null, isEditing = false }) 
 									name="Year"
 									value={movieData.Year}
 									onChange={handleChange}
-									required
+									
 								/>
 							</label>
 							<label className="flex flex-col gap-2 py-0.5 my-1">
@@ -119,7 +119,7 @@ const AddMovieForm = ({ onClose, existingMovieData = null, isEditing = false }) 
 									name="Director"
 									value={movieData.Director}
 									onChange={handleChange}
-									required
+									
 								/>
 							</label>
 							<label className="flex flex-col gap-2 py-0.5 my-1">
@@ -130,7 +130,7 @@ const AddMovieForm = ({ onClose, existingMovieData = null, isEditing = false }) 
 									name="Actors"
 									value={movieData.Actors}
 									onChange={handleChange}
-									required
+									
 								/>
 							</label>
 							<label className="flex flex-col gap-2 py-0.5 my-1">
@@ -141,7 +141,7 @@ const AddMovieForm = ({ onClose, existingMovieData = null, isEditing = false }) 
 									name="Genre"
 									value={movieData.Genre}
 									onChange={handleChange}
-									required
+									
 								/>
 							</label>
 							<label className="flex flex-col gap-2 py-0.5 my-1">
@@ -151,7 +151,7 @@ const AddMovieForm = ({ onClose, existingMovieData = null, isEditing = false }) 
 									name="Plot"
 									value={movieData.Plot}
 									onChange={handleChange}
-									required
+									
 								/>
 							</label>
 							<label className="flex flex-col gap-2 py-0.5 my-1">
@@ -162,7 +162,7 @@ const AddMovieForm = ({ onClose, existingMovieData = null, isEditing = false }) 
 									name="imdbRating"
 									value={movieData.imdbRating}
 									onChange={handleChange}
-									required
+									
 								/>
 							</label>
 							<label className="flex flex-col gap-2 py-0.5 my-1">

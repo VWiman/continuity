@@ -25,6 +25,8 @@ const MovieCard = ({ movie, showToast }) => {
 	const location = useLocation();
 	const [isAddingFavorite, setIsAddingFavorite] = useState(false);
 	const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+
+	// Temp image to handle cases of missing image
 	const noImage = "/temp.webp";
 
 	// Handle the editing modal and fetch from local or api to fill in existing fields
@@ -142,11 +144,22 @@ const MovieCard = ({ movie, showToast }) => {
 	return (
 		<li className="flex w-full justify-between p-4 movieItem" key={movie.imdbID}>
 			<div className="min-w-16 max-w-16 max-h-[100px] sm:max-h-full md:max-w-28 -mr-24 md:-mr-32 -mt-4 mb-3 ml-2 md:ml-14 z-50 rounded-2xl overflow-hidden shadow-sm shadow-black/80">
-				<img className="h-full aspect-auto" src={movie.Poster ? movie.Poster : noImage} alt={movie.Title} />
+				<img
+					className="h-full aspect-auto"
+					src={movie.Poster === "" || movie.Poster === "N/A" ? noImage : movie.Poster}
+					alt={movie.Title}
+					onError={(e) => {
+						e.target.onerror = null;
+						e.target.src = noImage;
+					}}
+				/>
 			</div>
 			<div className="flex w-full p-4 pl-20 md:pl-36 bg-white rounded-xl hover:bg-white/95 shadow-md select-none items-center hover:shadow-none outline-4 hover:outline outline-black/10">
 				<h3 className="flex flex-col mr-auto self-start">
-					<span className="w-fit text-[8px] md:text-xs font-medium text-white bg-movie-red-600 leading-none px-1.5 py-1.5 uppercase rounded-md shadow shadow-black/20">
+					<span
+						className={`w-fit text-[8px] md:text-xs font-semibold text-white  leading-none px-1.5 py-1.5  uppercase rounded-md shadow shadow-black/20 ${
+							movie.Type === "series" && "bg-green-600"
+						} ${movie.Type === "game" && "bg-blue-600"} ${movie.Type === "movie" && "bg-movie-red-600"}`}>
 						{movie.Type}
 					</span>
 					<span className="text-sm md:text-xl font-semibold mt-2">{movie.Title}</span>
@@ -167,7 +180,7 @@ const MovieCard = ({ movie, showToast }) => {
 					) : isFavorite ? (
 						<IconButton text={<Star />} action={handleOpenModalPopup} />
 					) : (
-						<IconButton text={<StarOutline />} action={handleAddToFavorites} />
+						<IconButton text={<StarOutline customId={`star-${movie.imdbID}`} />} action={handleAddToFavorites} />
 					)}
 				</i>
 				<DetailsButton type={null} icon={null} text="Details" action={handleOpenModal} />
@@ -198,7 +211,15 @@ const MovieCard = ({ movie, showToast }) => {
 						<div className="w-full flex flex-col justify-center items-center sm:flex-row">
 							<div className="w-auto sm:mr-4 mb-4 sm:mb-0 rounded-2xl shadow-sm shadow-black/80 border-4">
 								<div className="w-48 sm:w-56 rounded-2xl overflow-hidden">
-									<img src={movie.Poster ? movie.Poster : noImage} alt={movie.Title} className="w-full" />
+									<img
+										className="w-full"
+										src={movie.Poster === "" || movie.Poster === "N/A" ? noImage : movie.Poster}
+										alt={movie.Title}
+										onError={(e) => {
+											e.target.onerror = null;
+											e.target.src = noImage;
+										}}
+									/>
 								</div>
 							</div>
 
@@ -238,7 +259,7 @@ const MovieCard = ({ movie, showToast }) => {
 				)}
 			</Modal>
 			{/* Edit modal */}
-			{isEditModalOpen && ( 
+			{isEditModalOpen && (
 				<ModalEdit isOpen={isEditModalOpen} onClose={handleCloseEditModal}>
 					<AddMovieForm onClose={handleCloseEditModal} existingMovieData={movieDetails} isEditing={true} />
 				</ModalEdit>
