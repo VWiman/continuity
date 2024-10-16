@@ -6,6 +6,7 @@ const MovieList = ({ movies, error }) => {
 	const [isToastVisible, setIsToastVisible] = useState(false);
 	const [toastMessage, setToastMessage] = useState("");
 
+	// Display toast for 5 sec
 	const showToast = (message) => {
 			setToastMessage(message);
 			setIsToastVisible(true);
@@ -22,7 +23,7 @@ const MovieList = ({ movies, error }) => {
 
 	// Return the list of movies
 	return (
-		<ul id="movieList" className="w-full h-fit">
+		<ul id="movieList" className="flex flex-col gap-2 w-full h-fit">
 			{movies.map((movie) => (
 				<MovieCard key={movie.imdbID} movie={movie} showToast={showToast} />
 			))}

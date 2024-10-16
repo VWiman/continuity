@@ -63,7 +63,7 @@ const moviesSlice = createSlice({
 			})
 			.addCase(fetchMovies.rejected, (state) => {
 				state.status = "failed";
-				state.error = "Failed to fetch movies";
+				state.error = "Something went wrong. Failed to find the movie. Please try again.";
 			});
 	},
 });

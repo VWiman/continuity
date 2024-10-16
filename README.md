@@ -1,6 +1,6 @@
 # Continuity - Find New Movies and Track What You Have Seen
 
-Continuity is a web application that helps you discover new movies and track the ones you have already watched. This project utilizes modern frontend libraries and state management techniques to provide a seamless user experience.
+Continuity is a web application that helps you discover new movies and favorite the ones you have already watched. This project utilizes modern frontend libraries and state management techniques to provide a smooth user experience.
 
 ## Libraries Used
 
@@ -16,40 +16,48 @@ Continuity is a web application that helps you discover new movies and track the
 
 ## File Structure
 
-```plaintext
+``` plaintext
 📦continuity
  ┣ 📂public
  ┃ ┣ 📜favicon.svg
  ┃ ┣ 📜sitemap.xml
- ┃ ┗ 📜robots.txt      
+ ┃ ┣ 📜temp.webp
+ ┃ ┗ 📜robots.txt     
  ┣ 📂src
  ┃ ┣ 📂app
  ┃ ┃ ┗ 📜store.js          # Redux store configuration
  ┃ ┣ 📂components          # Reusable UI components
  ┃ ┃ ┣ 📂buttons
- ┃ ┃ ┃ ┣ 📜Button.jsx
  ┃ ┃ ┃ ┣ 📜CtaButton.jsx
+ ┃ ┃ ┃ ┣ 📜DetailsButton.jsx
  ┃ ┃ ┃ ┣ 📜IconButton.jsx
  ┃ ┃ ┃ ┗ 📜SubmitButton.jsx
+ ┃ ┃ ┣ 📂forms
+ ┃ ┃ ┃ ┣ 📜AddMovieForm.jsx
+ ┃ ┃ ┃ ┗ 📜SearchBar.jsx
  ┃ ┃ ┣ 📂icons
  ┃ ┃ ┃ ┣ 📜Bars.jsx
  ┃ ┃ ┃ ┣ 📜Close.jsx
+ ┃ ┃ ┃ ┣ 📜Edit.jsx
+ ┃ ┃ ┃ ┣ 📜Spinner.jsx
  ┃ ┃ ┃ ┣ 📜Star.jsx
  ┃ ┃ ┃ ┗ 📜StarOutline.jsx
- ┃ ┃ ┣ 📜Buttons.jsx
+ ┃ ┃ ┣ 📂modals
+ ┃ ┃ ┃ ┣ 📜Modal.jsx
+ ┃ ┃ ┃ ┣ 📜ModalEdit.jsx
+ ┃ ┃ ┃ ┗ 📜ModalPopup.jsx
  ┃ ┃ ┣ 📜Footer.jsx
  ┃ ┃ ┣ 📜Header.jsx
  ┃ ┃ ┣ 📜Layout.jsx
  ┃ ┃ ┣ 📜MainContainer.jsx
- ┃ ┃ ┣ 📜Modal.jsx
  ┃ ┃ ┣ 📜MovieCard.jsx
  ┃ ┃ ┣ 📜MovieList.jsx
- ┃ ┃ ┗ 📜SearchBar.jsx
+ ┃ ┃ ┗ 📜Toast.jsx
  ┃ ┣ 📂features            # Redux slices and related logic
  ┃ ┃ ┣ 📂lists
  ┃ ┃ ┃ ┗ 📜listsSlice.js    # User movie lists
  ┃ ┃ ┣ 📂movies
- ┃ ┃ ┃ ┣ 📜movieDetails.jsx # Movie details data fetching
+ ┃ ┃ ┃ ┣ 📜movieDetailsSlice.js  # Movie details data fetching
  ┃ ┃ ┃ ┗ 📜moviesSlice.js   # Movie data fetching
  ┃ ┣ 📂pages               # Pages components
  ┃ ┃ ┣ 📜FavoritesPage.jsx
@@ -64,6 +72,7 @@ Continuity is a web application that helps you discover new movies and track the
  ┣ 📜.env                    # Environment variables (e.g., API keys)
  ┣ 📜.generate-sitemap.js
  ┣ 📜.generateRobotsTxt.js
+ ┣ 📜.index.html
 ```
 
 ## Progress
@@ -95,3 +104,11 @@ Continuity is a web application that helps you discover new movies and track the
 ### Day 7 - 14 Oct
 
 > Added and cleaned up comments. Added another test. Updated documentation.
+
+### Day 8 - 15 Oct
+
+> Implemented full Crud, some commenting and fine tuning suffered. Left to do is commenting, fine tuning and planning presentation.
+
+### Day 9 - 16 Oct
+
+> Fine tuned some parts, implemented filtering for movies, games and shows in search.

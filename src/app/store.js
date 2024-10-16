@@ -2,7 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import listsReducer from "../features/lists/listsSlice";
 import moviesReducer from "../features/movies/moviesSlice";
 import { saveState } from "../utils/localStorage";
-import movieDetailsReducer from "../features/movies/movieDetails";
+import movieDetailsReducer from "../features/movies/movieDetailsSlice";
 
 const store = configureStore({
 	reducer: {
@@ -13,8 +13,8 @@ const store = configureStore({
 });
 
 store.subscribe(() => {
-	const state = store.getState()
-	saveState("lists", state.lists)
-})
+	const state = store.getState();
+	saveState("lists", state.lists);
+});
 
-export default store
+export default store;

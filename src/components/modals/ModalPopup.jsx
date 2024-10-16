@@ -1,4 +1,4 @@
-import Close from "./icons/Close";
+import Close from "../icons/Close";
 
 const ModalPopup = ({ isOpen, onClose, onAction }) => {
 	if (!isOpen) {
