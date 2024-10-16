@@ -1,5 +1,4 @@
 const StarOutline = ({customId = null}) => {
-	console.log(customId)
 
 	return (
 		<>

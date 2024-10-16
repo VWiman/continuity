@@ -21,7 +21,6 @@ export const fetchMovies = createAsyncThunk("movies/fetchMovies", async (searchV
 		}
 
 		// Return the result if there are no errors
-		console.log(result.Search);
 		return result.Search;
 
 		// Throw error if there is no response

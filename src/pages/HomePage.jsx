@@ -44,7 +44,7 @@ export default function HomePage() {
 					<span className="text-yellow-400 bg-black px-2 leading-snug rounded-xl">favorites</span>
 				</h2>
 			</div>
-			<div className="flex flex-col w-fit gap-4 md:mx-auto py-4 items-center">
+			<div className="flex flex-col w-full gap-4 md:mx-auto py-4 items-center">
 				<p className="flex flex-col gap-1 md:text-xl px-4 md:px-0 text-center">
 					<span>Continuity lets you search for any movie and retrive information about it.</span>
 					<span>You can favorite movies to remember the good ones.</span>

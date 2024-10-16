@@ -21,7 +21,6 @@ export const fetchMovieDetails = createAsyncThunk("movies/fetchMovieDetails", as
 		}
 
 		// Return the result if there are no errors
-		console.log(result);
 		return result;
 		// Throw error if there is no response
 	} catch (error) {
